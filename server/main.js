@@ -2,19 +2,19 @@ import { Meteor } from 'meteor/meteor';
 
 // UBER API tokens
 // For now will just log in as me
-var CLIENT_ID = "I2DTr5dVTRayGl9XRMxbJ5039T8eEmDk";
-var CLIENT_SECRET = "ZGaRJJYGzFls29L-BEQMJ04wOFogRxd2iW_xbqhb";
-var SERVER_TOKEN = "dNjo-RmtiBNTIr9f1pN5VdyYoCCbj2SWE-DwlMVv";
+var CLIENT_ID = Meteor.settings.private.oAuth.uber.clientId;
+var CLIENT_SECRET = Meteor.settings.private.oAuth.uber.secret;
+var ACCESS_TOKEN = Meteor.settings.private.access_token;
 
-// this may expire etc
-var ACCESS_TOKEN = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOlsicHJvZmlsZSIsImhpc3RvcnkiXSwic3ViIjoiYjQ0MThiMjUtZGE4YS00ZjFlLWFkYjAtODBkZDdiYzUwMGQ2IiwiaXNzIjoidWJlci11czEiLCJqdGkiOiIzMzNjNjE5OS1kYWNmLTRjMDMtYTM5Yy04NzIwOWQzYWYyMDEiLCJleHAiOjE0NzM0NDA4OTQsImlhdCI6MTQ3MDg0ODg5MywidWFjdCI6Ill3eDBzeUVtcE44NFptNFJpMXkxNEU4R2JkMmFNNCIsIm5iZiI6MTQ3MDg0ODgwMywiYXVkIjoiSTJEVHI1ZFZUUmF5R2w5WFJNeGJKNTAzOVQ4ZUVtRGsifQ.XiZUL4c21Ml68NxUrUbP5zQpQVEL6V_xjyr5q6P4lxKpf25fHXd2lbvo4E4Agz4OPPBtIN-81-AO7d34m2or4sN3F6oai26vF036ikiq0Z3YQAf8gONoUNjySMAfR2gvA7k8IHA7L_ya9ytyTLwsukfu-5bPVSo90YclpmGOFjnqAoT7EGRN53YBrw7t0KdUdq0ZyKKLfCIWXt6JAxy1SHjbMH_lOAQ7DMQIEptZZnQsJPnE1OoCbwC-jql00BNd_OAbVW5wyQ5bG_fafFlkzx0VZdTYEBbwKSC5yrRDe7X5cD8mkhsktJ-Ut3V3mUKKpzOSsUd05Kelet3GpacgLg"
 
 Meteor.methods({
 
-	testProfileQuery: function(access_token){
-		res = HTTP.call("GET","https://api.uber.com/v1/me", {
+    // Fix - Don't need callback here.
+    // Should call this server-side on load. 
+	loadProfileData: function(){
+		var res = HTTP.call("GET","https://api.uber.com/v1/me", {
         	headers: {
-            	Authorization: "Bearer " + access_token,
+            	Authorization: "Bearer " + ACCESS_TOKEN,
             	"Content-Type": "application/x-www-form-urlencoded"
          	}, function(err, result) {
          		if (err) {
@@ -23,29 +23,28 @@ Meteor.methods({
          		} else {
          			console.log("profile result: ");
          			console.log(result);
+
          		}
          	}
 		});
-		console.log(res);
+
+        // insert data
+        UserInfo.insert(res.data);
 
 	},
 
-	testHistoryQuery: function(access_token){
-		HTTP.call("GET","https://api.uber.com/v1.2/history", {
-        	headers: {
-            	Authorization: access_token,
-            	"Content-Type": "application/x-www-form-urlencoded"
-         	}, function(err, result) {
-         		if (err) {
-         			console.log("Error, couldn't get the history. ");
-         			console.log(err);
-         		} else {
-         			console.log("history result: ");
-         			console.log(result);
-         		}
-         	}
-		});
-	},
+
+    loadTripHistoryData: function() {
+        var res = HTTP.call("GET","https://api.uber.com/v1.2/history", {
+            headers: {
+                Authorization: "Bearer " + ACCESS_TOKEN,
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        });
+
+        console.log(res);
+    },
+
 
 	// Takes the authorization code we got from the
 	// redirect URL and get the access token.
@@ -88,5 +87,5 @@ Meteor.methods({
 
 
 Meteor.startup(() => {
-
+    UserInfo._ensureIndex('uuid', {unique: true});
 });
