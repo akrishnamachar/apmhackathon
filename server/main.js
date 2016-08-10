@@ -10,6 +10,15 @@ var client_uuid = "b4418b25-da8a-4f1e-adb0-80dd7bc500d6";
 
 Meteor.methods({
 
+    dumpJsonDataToMongo: function() {
+        var myjson = {};
+        myjson = JSON.parse(Assets.getText("ambika_trip_data.json"));
+        for (var i=0; i<myjson.length; i++) {
+            obj = myjson[i];
+            QuerybuilderTripData.insert(obj);
+        }
+    },
+
     // Fix - Don't need callback here.
     // Should call this server-side on load. 
 	loadProfileData: function(){
@@ -98,4 +107,7 @@ Meteor.methods({
 Meteor.startup(() => {
     UserInfo._ensureIndex('uuid', {unique: true});
     TripHistory._ensureIndex('request_id', {unique: true});
+
+    // var obj = HTTP.get("http://localhost:3000/ambika_trip_data.csv").data;
+    // console.log(obj);
 });

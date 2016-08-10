@@ -40,14 +40,15 @@ Template.content.onCreated(function() {
 
 			  GoogleMaps.ready('exampleMap', function(map) {
 
-			  	var trips = TripHistory.find({"uuid": "b4418b25-da8a-4f1e-adb0-80dd7bc500d6"}).fetch()
+			  	var trips = QuerybuilderTripData.find().fetch();
+
+			  	//var trips = TripHistory.find({"uuid": "b4418b25-da8a-4f1e-adb0-80dd7bc500d6"}).fetch()
 			  	if (trips) {
 			  		console.log(trips)
 				  	for (var i=0; i<trips.length; i++) {
 				  		var trip = trips[i];
-				  		var startLat = trip.start_city.latitude;
-				  		var startLong = trip.start_city.longitude;
-				  		console.log("Adding new marker with lat " + startLat + " and long " + startLong);
+				  		var startLat = trip.request_lat;
+				  		var startLong = trip.request_lng;
 				  		var latlng = {lat: startLat, lng: startLong}
 				  		var new_marker = new google.maps.Marker({
 					      position: latlng,
