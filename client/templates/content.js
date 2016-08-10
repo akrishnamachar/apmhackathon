@@ -27,29 +27,57 @@ Template.content.helpers({
 
 Template.content.onCreated(function() {
 
-	  // Get the user data
-	  //Meteor.call("testProfileQuery");
-	  Meteor.call('loadProfileData');
-	  Meteor.call('loadTripHistoryData');
+	Tracker.autorun(function () {
 
-	  // TODO: Get the user email or uuid from server here. 
+	  // Meteor.call('loadProfileData');
+	  // Meteor.call('loadTripHistoryData');
 
-	  var user_info = UserInfo.findOne({"email":"akrishnamachar@uber.com"})
-	  console.log("user info: ");
-	  console.log(user_info);
-	  if (user_info) {
-		  Session.set("username",user_info.first_name);
-		  Session.set("profile_pic", user_info.picture);
-	  }
+		var user_info = UserInfo.findOne({"email":"akrishnamachar@uber.com"})
+	    if(user_info) { 
+	    	console.log("user info in tracker autorun");
+	    	Session.set("username",user_info.first_name);
+			Session.set("profile_pic", user_info.picture);
 
-	  // We can use the `ready` callback to interact with the map API once the map is ready.
-	  GoogleMaps.ready('exampleMap', function(map) {
-	    // Add a marker to the map once it's ready
-	    var marker = new google.maps.Marker({
-	      position: map.options.center,
-	      map: map.instance
-	    });
+			  GoogleMaps.ready('exampleMap', function(map) {
+
+			  	var trips = TripHistory.find({"uuid": "b4418b25-da8a-4f1e-adb0-80dd7bc500d6"}).fetch()
+			  	if (trips) {
+			  		console.log(trips)
+				  	for (var i=0; i<trips.length; i++) {
+				  		var trip = trips[i];
+				  		var startLat = trip.start_city.latitude;
+				  		var startLong = trip.start_city.longitude;
+				  		console.log("Adding new marker with lat " + startLat + " and long " + startLong);
+				  		var latlng = {lat: startLat, lng: startLong}
+				  		var new_marker = new google.maps.Marker({
+					      position: latlng,
+					      map: map.instance
+					    });
+
+				  	}
+			  	}
+			  });
+
+	    };    
 	  });
+
+
+		  // We can use the `ready` callback to interact with the map API once the map is ready.
+		  // GoogleMaps.ready('exampleMap', function(map) {
+
+		  // 	var myLatLng = {lat: -25.363, lng: 131.044};
+
+		  //   // Add a marker to the map once it's ready
+		  //   var marker1 = new google.maps.Marker({
+		  //     position: map.options.center,
+		  //     map: map.instance
+		  //   });
+
+		  //  	var marker2 = new google.maps.Marker({
+		  //     position: myLatLng,
+		  //     map: map.instance
+		  //   });
+		  // });
 });
 
 

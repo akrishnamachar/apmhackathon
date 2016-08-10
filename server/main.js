@@ -6,6 +6,7 @@ var CLIENT_ID = Meteor.settings.private.oAuth.uber.clientId;
 var CLIENT_SECRET = Meteor.settings.private.oAuth.uber.secret;
 var ACCESS_TOKEN = Meteor.settings.private.access_token;
 
+var client_uuid = "b4418b25-da8a-4f1e-adb0-80dd7bc500d6";
 
 Meteor.methods({
 
@@ -42,7 +43,15 @@ Meteor.methods({
             }
         });
 
-        console.log(res);
+        var history_items = res.data.history;
+        
+        for (var i=0; i<history_items.length; i++) {
+            var item = history_items[i];
+            item.uuid = client_uuid;
+            console.log(item);
+            TripHistory.insert(item);
+        }
+
     },
 
 
@@ -88,4 +97,5 @@ Meteor.methods({
 
 Meteor.startup(() => {
     UserInfo._ensureIndex('uuid', {unique: true});
+    TripHistory._ensureIndex('request_id', {unique: true});
 });
