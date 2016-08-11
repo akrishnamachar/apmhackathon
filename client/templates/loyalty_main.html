@@ -1,84 +1,112 @@
 <template name="loyalty">
 	{{> nav}}
-	<div class="profile_overview">
-		<div>
-			<img src="{{profile_pic}}" name="aboutme" width="140" height="140" border="0" class="img-circle"> 
-		</div>
-
-		<div class="name-wrapper">
-		{{full_name}}
-		</div>
-
-		<div>
-		{{> starsRating rating=4.5 size='lg'}}
-		</div>
-	</div>
-
-	<div class="page-header">
-	</div>
-
-
-	<div class="main-num-wrapper">
-		<div class="num-rides-taken">
-			571
-		</div>
-		<div class="amt-money-spent">
-			$4200
-		</div>
-		<div class="num-miles-travelled">
-			364
-		</div>
-	</div>
-
-
-	<div class="form-group">
-	  <select class="form-control form-control-custom" id="main-select">
-	    <option value="num_rides">Number of rides I've taken</option>
-	    <option value="money_spent">Amount of money I've spent</option>
-	    <option value="miles_travelled">Number of miles I've travelled</option>
-	  </select>
-	</div>
 
 
 	<div class="row">
-		<div class="col-md-4 rank-wrapper">
-			<div class="my-rank">
-				<div class="num-rides-taken">#57 of 1032</div>
-				<div class="amt-money-spent">#58 of 1032</div>
-				<div class="num-miles-travelled">#59 of 1032</div>
-			</div>
-			<div>
-				in San Francisco
-			</div>
+		<div class="col-md-2 left-panel" style="height:800px">
+			<div class="profile_overview">
+				<div>
+					<img src="{{profile_pic}}" name="aboutme" width="140" height="140" border="0" class="img-circle"> 
+				</div>
 
-		</div>
+				<div class="name-wrapper">
+				{{first_name}}
+				</div>
 
-		<div class="col-md-4 rank-wrapper">
-			<div class="my-rank">
-				<div class="num-rides-taken">#2932 of 20399</div>
-				<div class="amt-money-spent">#2933 of 20399</div>
-				<div class="num-miles-travelled">#2934 of 20399</div>
-			</div>
-			<div>
-				in the USA
+				<div>
+				{{> starsRating rating=4.5 size='lg'}}
+				</div>
+
+				REFER A FRIEND
+
 			</div>
 		</div>
 
-		<div class="col-md-4 rank-wrapper">
-			<div class="my-rank">
-				<div class="num-rides-taken">#40381 of 120k</div>
-				<div class="amt-money-spent">#40382 of 120k</div>
-				<div class="num-miles-travelled">#40383 of 120k</div>
-			</div>
-			<div>
-				worldwide
-			</div>
-		</div>
-	</div>
+		<div class="col-md-10">
+			<div class="row">
+					<div class="col-md-8">
+						<span class="form-group">
+						  <select class="form-control form-control-custom" id="main-select">
+						    <option value="num_rides">How many rides have I taken?</option>
+						    <option value="money_spent">How much time have I spent in an Uber? </option> 
+						    <option value="miles_travelled">How many miles have I travelled?</option>
+						    <option value="where_been">Where have I been? </option>
 
-	<div class="page-header">
-	</div>
+						  </select>
+						</span>
+
+
+						<div class="main-num-wrapper">
+							<div class="num-rides-taken">
+								{{user_num_rides}}
+							</div>
+							<div class="amt-money-spent">
+								{{user_money_spent}}
+							</div>
+							<div class="num-miles-travelled">
+								{{user_miles_travelled}}
+							</div>
+						</div>
+
+						<div class="row rank-nums">
+							<div class="col-md-4 rank-wrapper">
+								<div class="alert alert-info">
+								
+									<div class="my-rank">
+										<div class="num-rides-taken">#57 of 1032</div>
+										<div class="amt-money-spent">#58 of 1032</div>
+										<div class="num-miles-travelled">#59 of 1032</div>
+									</div>
+									<div>
+										in San Francisco
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 rank-wrapper">
+								<div class="alert alert-info">
+								<div class="my-rank">
+									<div class="num-rides-taken">#2932 of 20399</div>
+									<div class="amt-money-spent">#2933 of 20399</div>
+									<div class="num-miles-travelled">#2934 of 20399</div>
+								</div>
+								<div>
+									in the USA
+								</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 rank-wrapper">
+								<div class="alert alert-info">
+								<div class="my-rank">
+									<div class="num-rides-taken">#40381 of 120k</div>
+									<div class="amt-money-spent">#40382 of 120k</div>
+									<div class="num-miles-travelled">#40383 of 120k</div>
+								</div>
+								<div>
+									worldwide
+								</div>
+								</div>
+							</div>
+						</div>
+							<div class="page-header">
+							</div>
+
+					<div class="map-container">
+					    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+					    
+					 </div>
+					</div>
+					<div class="col-md-4">
+
+					{{> leaderboard}}
+
+					</div>
+			</div>
 
 	Map thing
+	</div>
+	</div>
+
 
 </template>

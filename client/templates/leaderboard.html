@@ -1,0 +1,12 @@
+<template name="leaderboard">
+	<table class="table table-striped custom_table">
+		<tbody>
+		{{#each sorted_users}}
+	    <tr>
+	      <td><span><img class="leader-img img-circle" src="{{pic_url}}"></span>{{name}}</td>
+	      <td class="num_td">{{value}}</td>
+	    </tr>
+	    {{/each}}
+	  </tbody>
+	</table>
+</template>

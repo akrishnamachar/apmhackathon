@@ -10,12 +10,21 @@ var client_uuid = "b4418b25-da8a-4f1e-adb0-80dd7bc500d6";
 
 Meteor.methods({
 
-    dumpJsonDataToMongo: function() {
+    dumpJsonToUserInfo: function(path) {
         var myjson = {};
-        myjson = JSON.parse(Assets.getText("ambika_trip_data.json"));
+        myjson = JSON.parse(Assets.getText(path));
         for (var i=0; i<myjson.length; i++) {
             obj = myjson[i];
-            QuerybuilderTripData.insert(obj);
+            UserInfo.insert(obj);
+        }
+    },
+
+    dumpJsonToTripInfo: function(path) {
+        var myjson = {};
+        myjson = JSON.parse(Assets.getText(path));
+        for (var i=0; i<myjson.length; i++) {
+            obj = myjson[i];
+            TripInfo.insert(obj);
         }
     },
 
@@ -105,8 +114,8 @@ Meteor.methods({
 
 
 Meteor.startup(() => {
-    UserInfo._ensureIndex('uuid', {unique: true});
-    TripHistory._ensureIndex('request_id', {unique: true});
+    // UserInfo._ensureIndex('user_uuid', {unique: true});
+    // TripHistory._ensureIndex('request_id', {unique: true});
 
     // var obj = HTTP.get("http://localhost:3000/ambika_trip_data.csv").data;
     // console.log(obj);

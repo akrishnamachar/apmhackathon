@@ -27,8 +27,7 @@
 }
 
 .form-control-custom {
-	width: 500px;
-	margin: auto;
+	font-size: 18px;
 }
 
 .name-wrapper {
@@ -39,6 +38,7 @@
 .main-num-wrapper {
 	text-align: center;
 	font-size: 60px;
+	margin-bottom: 30px;
 }
 
 .rank-wrapper {
@@ -52,4 +52,26 @@
 #user-glyph {
 	font-size: 20px;
 	color: white;
+}
+
+.left-panel {
+	border-right: 1px solid #eee;
+}
+
+.leader-img {
+	height: 40px;
+	margin-right: 10px;
+}
+
+.num_td {
+	padding-top: 18px !important;
+}
+
+.alert-info {
+	color: black;
+}
+
+.custom_table {
+	font-size: 16px;
+	width: 90%;
 }
