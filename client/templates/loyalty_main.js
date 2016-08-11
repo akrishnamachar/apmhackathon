@@ -1,5 +1,17 @@
 Template.loyalty.helpers({
 
+	profile_pic: function() {
+		return "https://d1w2poirtb3as9.cloudfront.net/bb8e0b07bd9ec210b651.jpeg"
+	},
+
+	full_name: function() {
+		return "Ambika Krishnamachar";
+	},
+
+	star_rating: function() {
+		return 4.5;
+	}
+
 
 
 })
