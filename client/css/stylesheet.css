@@ -3,3 +3,48 @@
   max-width: 100%;
   height: 500px;
 }
+
+.navbar-default {
+	background-color: black;
+}
+
+.custom-navbar-brand {
+	margin-top: -15px;
+}
+
+#logo-img {
+	height: 50px !important;
+}
+
+.profile_overview {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.stars-rating {
+	width: 155px;
+	margin: auto;
+}
+
+.form-control-custom {
+	width: 500px;
+	margin: auto;
+}
+
+.name-wrapper {
+	font-size: 30px;
+	padding: 5px;
+}
+
+.main-num-wrapper {
+	text-align: center;
+	font-size: 60px;
+}
+
+.rank-wrapper {
+	text-align: center;
+}
+
+.my-rank {
+	font-size: 20px;
+}

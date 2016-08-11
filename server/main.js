@@ -110,4 +110,9 @@ Meteor.startup(() => {
 
     // var obj = HTTP.get("http://localhost:3000/ambika_trip_data.csv").data;
     // console.log(obj);
+
+    // Let's try talking to Python
+    var test = HTTP.call("GET", "http://127.0.0.1:5000/test");   
+    console.log("TESTING HTTP CALL TO PYTHON");
+    console.log(test);
 });
