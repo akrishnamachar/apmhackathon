@@ -1,0 +1,29 @@
+<template name="midsection">
+	<span class="form-group">
+	  <select class="form-control form-control-custom" id="main-select">
+	    <option value="shortest_ride">How short was my shortest ride? </option>
+	    <option value="longest_ride">How long was my longest ride? </option>
+	    <option value="favorite_times">What are my favorite times to take Uber? </option> 
+	    <option value="rider_rating">What is my rider rating?</option>
+	    <option value="vehicle_type">What is my preferred Uber type?</option>
+	    <option value="where_travelled">Where have I travelled? </option>
+	  </select>
+	</span>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div id="shortest_ride_container" class="data-container">{{> shortest_ride}}</div>
+			<div id="longest_ride_container" class="data-container">{{> longest_ride}}</div>
+			<div id="favorite_times_container" class="data-container">{{> favorite_times}}</div>
+			<div id="rider_rating_container" class="data-container">{{> rider_rating}}</div>
+			<div id="preferred_type_container" class="data-container">{{> preferred_type}}</div>
+			<div id="where_travelled_container" class="data-container">{{> where_travelled}}</div>
+		</div>
+		<div class="col-sm-6">
+			{{> leaderboard}}
+		</div>
+	</div>
+
+
+
+</template>

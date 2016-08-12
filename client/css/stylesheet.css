@@ -28,6 +28,7 @@
 
 .form-control-custom {
 	font-size: 18px;
+	margin-bottom: 20px;
 }
 
 .name-wrapper {
@@ -74,4 +75,17 @@
 .custom_table {
 	font-size: 16px;
 	width: 90%;
+}
+
+.signin-well {
+	width: 40%;
+	margin: auto;
+}
+
+.btn-info-custom {
+	background-color: #3B5998;
+}
+
+.btn-info-custom:hover {
+	background-color: #3B5998;
 }
