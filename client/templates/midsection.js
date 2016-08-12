@@ -15,7 +15,6 @@ Template.midsection.events({
 		if (val=="shortest_ride") {
 			$("#shortest_ride_container").show();
 		} else if (val=="longest_ride") {
-			console.log("longest ride sow")
 			$("#longest_ride_container").show();
 		} else if (val=="favorite_times") {
 			$("#favorite_times_container").show();

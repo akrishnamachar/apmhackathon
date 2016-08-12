@@ -1,4 +1,17 @@
 <template name="shortest_ride">
+
+{{#with getShortestTripByTime}}
+	<div class="result-header">
+		<span class="header-text">{{trip_duration_seconds}} seconds... Whoa. </span>
+<!-- 		<div class="btn-group" role="group" aria-label="Basic example">
+		  <button type="button" class="btn btn-secondary active">Time</button>
+		  <button type="button" class="btn btn-secondary">Distance</button>
+		</div> -->
+	</div>
+	 <div class="map-container">
+    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+  </div>
+
+{{/with}}
 	
-	Shortest ride
 </template>

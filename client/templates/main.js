@@ -35,15 +35,7 @@ Template.main.events({
 
 });
 
-Template.main.onRendered(function() {
-	$(".navbar-right").show();
 
-	$(".num-rides-taken").show();
-	$(".amt-money-spent").hide();
-	$(".num-miles-travelled").hide();
-
-	$(".map-container").hide();
-});
 
 Template.main.onCreated(function() {
 

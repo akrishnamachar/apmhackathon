@@ -2,11 +2,11 @@ import { Meteor } from 'meteor/meteor';
 
 // UBER API tokens
 // For now will just log in as me
-var CLIENT_ID = Meteor.settings.private.oAuth.uber.clientId;
-var CLIENT_SECRET = Meteor.settings.private.oAuth.uber.secret;
-var ACCESS_TOKEN = Meteor.settings.private.access_token;
+// var CLIENT_ID = Meteor.settings.private.oAuth.uber.clientId;
+// var CLIENT_SECRET = Meteor.settings.private.oAuth.uber.secret;
+// var ACCESS_TOKEN = Meteor.settings.private.access_token;
 
-var client_uuid = "b4418b25-da8a-4f1e-adb0-80dd7bc500d6";
+// var client_uuid = "b4418b25-da8a-4f1e-adb0-80dd7bc500d6";
 
 Meteor.methods({
 

@@ -1,5 +1,13 @@
 <template name="rider_rating">
-	
-	Rider rating
 
+	<div class="header-text">They love you. </div>
+	
+	<div class="row">
+		<div class="col-sm-3">
+			<span class="rating-num">{{rider_rating}}</span>
+		</div>
+		<div class="col-sm-9">
+			{{> starsRating rating=rider_rating size=50}}
+		</div>
+	</div>
 </template>
