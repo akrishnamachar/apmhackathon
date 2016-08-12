@@ -39,8 +39,7 @@ Template.main.events({
 
 Template.main.onCreated(function() {
 
-	Session.set("type", "num_rides");
-	
+	Session.set("select_val", "shortest_ride");	
 	Tracker.autorun(function () {
 
 

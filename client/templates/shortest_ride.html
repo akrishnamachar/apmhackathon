@@ -1,8 +1,8 @@
 <template name="shortest_ride">
 
-{{#with getShortestTripByTime}}
+{{#with getTripByTime}}
 	<div class="result-header">
-		<span class="header-text">{{trip_duration_seconds}} seconds... Whoa. </span>
+		<span class="header-text">{{trip_duration trip_duration_seconds}}... Whoa. </span>
 <!-- 		<div class="btn-group" role="group" aria-label="Basic example">
 		  <button type="button" class="btn btn-secondary active">Time</button>
 		  <button type="button" class="btn btn-secondary">Distance</button>

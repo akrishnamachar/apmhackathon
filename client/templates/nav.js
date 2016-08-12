@@ -7,5 +7,5 @@ Template.nav.events({
 });
 
 Template.nav.onRendered(function() {
-	$(".navbar-right").hide();
+	//$(".navbar-right").hide();
 });

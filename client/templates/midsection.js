@@ -15,7 +15,7 @@ Template.midsection.events({
 		if (val=="shortest_ride") {
 			$("#shortest_ride_container").show();
 		} else if (val=="longest_ride") {
-			$("#longest_ride_container").show();
+			$("#shortest_ride_container").show();
 		} else if (val=="favorite_times") {
 			$("#favorite_times_container").show();
 		} else if (val=="rider_rating") {
@@ -31,5 +31,4 @@ Template.midsection.events({
 Template.midsection.onRendered(function() {
 	$(".data-container").hide();
 	$("#shortest_ride_container").show();
-
 });

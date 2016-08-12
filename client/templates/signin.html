@@ -7,13 +7,17 @@
                   <input id="email-input" type="text" class="form-control" name="email" value="" required="" title="Please enter your email" placeholder="username">
                   <span class="help-block"></span>
               </div>
-              <div class="form-group">
-                  <label for="password" class="control-label">Password</label>
-                  <input type="password" class="form-control" name="password" placeholder="password" value="" required="" title="Please enter your password">
+                <div class="form-group">
+                  <label for="username" class="control-label">Password</label>
+                  <input type="password" class="form-control" name="email" value="" required="" title="Please enter your password" placeholder="password">
                   <span class="help-block"></span>
               </div>
+              <div class="form-group" hidden>
+                  <label for="password" class="control-label">Password</label>
+                  <input type="password" class="form-control" placeholder="password" value="" required="" title="Please enter your password">
+              </div>
               <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
-              <button type="submit" value="login" name="submit" id="signin-submit" class="btn btn-info btn-info-custom btn-block">Login with Facebook </button>
+              <button name="submit" id="signin-submit" class="btn btn-info btn-info-custom btn-block">Login with Facebook </button>
           </form>
       </div>
 
